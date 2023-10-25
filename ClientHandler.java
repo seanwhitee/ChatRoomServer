@@ -5,9 +5,9 @@ import java.net.Socket;
 import java.util.Set;
 
 public class ClientHandler extends Thread {
-    private Socket clientSocket;
+    private final Socket clientSocket;
     private OutputStream outputStream;
-    private Set<ClientHandler> clients;
+    private final Set<ClientHandler> clients;
 
     public ClientHandler(Socket socket, Set<ClientHandler> clients) {
         this.clientSocket = socket;
@@ -19,6 +19,13 @@ public class ClientHandler extends Thread {
         }
     }
 
+    /**
+     * Broadcasts a message to all clients.
+     * This method override run() method in Thread class.
+     * When you call start() on an instance of your Thread subclass, it internally calls the run()
+     * method you've overridden.`
+     *
+     */
     public void run() {
         try (InputStream inputStream = clientSocket.getInputStream()) {
             byte[] buffer = new byte[1024];
