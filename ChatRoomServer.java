@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ChatRoomServer {
-    private int portNumber;
-    private Set<ClientHandler> clients;
+    private final int portNumber;
+    private final Set<ClientHandler> clients;
 
     public ChatRoomServer(int portNumber) {
         this.portNumber = portNumber;
